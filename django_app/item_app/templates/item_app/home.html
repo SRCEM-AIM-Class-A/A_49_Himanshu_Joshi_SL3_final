@@ -1,0 +1,45 @@
+{% extends 'item_app/base.html' %}
+
+{% block title %}Item Management - Home{% endblock %}
+
+{% block content %}
+    <section>
+        <h2>Add New Item</h2>
+        <form method="post">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="{{ form.name.id_for_label }}">Name:</label>
+                {{ form.name }}
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form.description.id_for_label }}">Description:</label>
+                {{ form.description }}
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form.price.id_for_label }}">Price:</label>
+                {{ form.price }}
+            </div>
+            
+            <button type="submit">Add Item</button>
+        </form>
+    </section>
+    
+    <section class="item-list">
+        <h2>Item List</h2>
+        {% if items %}
+            {% for item in items %}
+                <div class="item">
+                    <h3>{{ item.name }}</h3>
+                    <p>{{ item.description }}</p>
+                    <p><strong>Price:</strong> ${{ item.price }}</p>
+                    <p><small>Added on: {{ item.created_at|date:"F j, Y" }}</small></p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No items available yet.</p>
+        {% endif %}
+    </section>
+{% endblock %}

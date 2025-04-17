@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Greeting</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        nav {
+            margin-bottom: 20px;
+        }
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        .greeting {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="/">Home</a>
+            <a href="/user_info">User Info Form</a>
+        </nav>
+        <h1>Greeting</h1>
+        <div class="greeting">
+            <p>Hello {{ name }}! You are {{ age }} years old.</p>
+            {% if age < 18 %}
+                <p>You are still a minor.</p>
+            {% elif age >= 65 %}
+                <p>You are a senior citizen.</p>
+            {% else %}
+                <p>You are an adult.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
